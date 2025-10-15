@@ -24,8 +24,11 @@ export async function onRequest(context) {
 
   try {
     // 从服务器到服务器的请求
-    const response = await fetch(appleApiUrl);
-    
+    const response = await fetch(appleApiUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
+      }
+    });    
     // 检查苹果服务器的响应是否成功
     if (!response.ok) {
       // 如果苹果服务器返回错误，将错误信息透传给前端
